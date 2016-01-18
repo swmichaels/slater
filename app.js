@@ -20,41 +20,67 @@
       }
     },
 
-    slaName: function(slas, metrics) {
+    slaInfo: function(slas, metrics) {
+
+      var self = this;
+
+      if (slas.length < 1) { return undefined; }
+
+      // houses the return object we will send:
+      // combo of slas endpoint and event metrics
       var buildReturn = {};
-
+      buildReturn.metrics = [];
       var metricString;
-
-      // use the first policy.. sure why not.. what could possibly go wrong?
-      if (slas.policy_metrics[0].metric == 'first_reply_time' || 
-          slas.policy_metrics[0].metric == 'next_reply_time') {
-        metricString = 'reply_time';
-      } else {
-        metricString = slas.policy_metrics[0].metric;
-      }
-
-      var metricsarray = metrics[metricString];
-
-      // find the name of the policy by searching through each
-      for (var i = 0; i < metricsarray.length; i++)  {
-        if (metricsarray[i].type == 'apply_sla') {
-          buildReturn['title'] = metricsarray[i].sla.policy.title;
-          buildReturn['time'] = metricsarray[i].time;
-          break;
-        }
-      }
-
-      // use moment.js timezone to get user's time as well
-
-      // todo: make a setting for am/pm vs 24h time
-      // get user timezone
+      var metricsArray;
 
       var currentAccount = this.currentAccount();
       var currentUser = this.currentUser();
 
       var currentTimezone = currentUser.timeZone() || currentAccount.timeZone();
+ 
+      var metricObject;
 
-      buildReturn['userTime'] = this.userTime(buildReturn.time);
+      // let's go through the policies
+      slas.policy_metrics.forEach(function(policy, index, array) {
+        if (policy.metric == 'first_reply_time' || 
+                      policy.metric == 'next_reply_time') {
+          metricString = 'reply_time';
+        } else {
+          metricString = policy.metric;
+        }
+
+        metricObject = {};
+        metricObject.steps = [];
+        metricObject.title = policy.metric;
+        metricObject.stage= policy.stage;
+        var reply_time_count = 0;
+          
+        metrics[metricString].forEach(function(eventMetric, position, marray) {
+          // let's get the name of our SLA policy applied to the ticket
+          if (buildReturn['title'] === undefined && 
+                  eventMetric.type == 'apply_sla') {
+            buildReturn['title'] = eventMetric.sla.policy.title;
+            buildReturn['time'] = eventMetric.time;
+            buildReturn['userTime'] = self.userTime(buildReturn['time']);
+          }
+         
+          // let's not include measure or update_status in our results
+          if (eventMetric.type == 'measure' ||
+                   eventMetric.type == 'update_status') {
+            
+            return;
+
+          } else {
+            metricObject.steps.push({
+              type: eventMetric.type,
+              time: eventMetric.time,
+              userTime: self.userTime(eventMetric.time)
+            });
+          }
+        });
+
+        buildReturn.metrics.push(metricObject);
+      });
 
       return buildReturn;
     },
@@ -65,12 +91,12 @@
 
       var currentTimezone = currentUser.timeZone() || currentAccount.timeZone();
 
-      return moment(timestamp).tz(currentTimezone.ianaName()).format('YYYY-MM-DD [at] HH:mm:ss');
+      return moment(timestamp).tz(currentTimezone.ianaName()).format('YYYY-MM-DD [at] hh:mm:ss a');
   },
 
     firstReplyTime: function(metrics) {
       var replyTimeArray = metrics['reply_time']; 
-      console.log(replyTimeArray);
+      // console.log(replyTimeArray);
       for (var i = 0; i < replyTimeArray.length; i++) {
         if (replyTimeArray[i].type == 'fulfill') {
           return { FRT: this.userTime(replyTimeArray[i].time) };
@@ -95,18 +121,18 @@
           } else {
             metric_events = data.ticket.metric_events;
  
-            console.log(slas);
-            console.log(metric_events);
+            //console.log(slas);
+            //console.log(metric_events);
 
             // todo: convert this to user's local time
                   
-            var slaInfo = this.slaName(slas, metric_events);
-           
+            var slaInfoSend = this.slaInfo(slas, metric_events);
+          
+            console.log(slaInfoSend);
+
             var FRT = this.firstReplyTime(metric_events);
             this.switchTo('slainfo', {
-              nameTime: slaInfo,
-              metrics: slas.policy_metrics, 
-              metric_events: metric_events,
+              nameTime: slaInfoSend,
               FRT: FRT.FRT
             });
           }

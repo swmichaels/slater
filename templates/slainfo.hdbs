@@ -5,11 +5,16 @@
 <hr />
 <p>FRT: {{FRT}}</p>
 <hr />
-<p>hmm, I see #{{metrics.length}} SLA targets:</p>
+<p>hmm, I see #{{nameTime.metrics.length}} SLA targets:</p>
 <ul>
-  {{#each metrics}}
-    <li>Metric name: {{metric}}</li>
+  {{#each nameTime.metrics}}
+    <li>Metric name: {{title}}</li>
     <li>Stage: {{stage}}</li>
+    <hr />
+    {{#each steps}}
+      <li>{{type}}</li>
+      <li>{{userTime}}</li>
+    {{/each}}
     <hr />
   {{/each}}
 </ul>
@@ -17,3 +22,16 @@
 <svg width="30" height="30">
 <circle cx="12.5" cy="12.5" r="12.5" fill="green" />
 </svg>
+<svg width="30" height="30">
+<circle cx="12.5" cy="12.5" r="12.5" fill="red" />
+</svg>
+<svg width="30" height="30">
+<circle cx="12.5" cy="12.5" r="12.5" fill="yellow" />
+</svg>
+<svg width="30" height="30">
+<circle cx="12.5" cy="12.5" r="12.5" fill="orange" />
+</svg>
+<svg width="30" height="30">
+<circle cx="12.5" cy="12.5" r="12.5" fill="blue" />
+</svg>
+
