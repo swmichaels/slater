@@ -1,0 +1,13 @@
+<p>There was most certainly an SLA policy applied on this ticket</p>
+
+<p>Policy Name: {{nameTime.title}}</p>
+<p>Policy Time Applied: {{nameTime.time}}</p>
+
+<p>hmm, I see #{{metrics.length}} SLA targets:</p>
+<ul>
+  {{#each metrics}}
+    <li>Metric name: {{metric}}</li>
+    <li>Stage: {{stage}}</li>
+    <hr />
+  {{/each}}
+</ul>
