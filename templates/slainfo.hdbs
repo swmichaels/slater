@@ -4,15 +4,15 @@
 <p>Policy Time Applied: {{nameTime.userTime}}</p>
 <hr />
 <hr />
-<p>hmm, I see #{{nameTime.metrics.length}} SLA targets:</p>
+<p>hmm, I see #{{sla.targets.length}} SLA targets:</p>
 <ul>
-  {{#each nameTime.metrics}}
-    <li>Metric name: {{title}}</li>
+  {{#each sla.targets}}
+    <li>Metric name: {{metric}}</li>
     <li>Stage: {{stage}}</li>
     <hr />
-    {{#each steps}}
+    {{#each history}}
       <li>{{type}}</li>
-      <li>{{userTime}}</li>
+      <li>{{time}}</li>
     {{/each}}
     <hr />
   {{/each}}

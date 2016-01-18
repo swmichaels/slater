@@ -20,14 +20,16 @@
       }
     },
 
-    slaInfo: function(slas) {
+
+    // returns a nice juicy piece of SLA policy + metrics
+    slaInfo: function(slaJSON) {
       var self = this;
 
-      var metrics = slas.metrics;
+      var metrics = slaJSON.events;
       // houses the return object we will send:
       // combo of slas endpoint and event metrics
-      var buildReturn = {};
-      buildReturn.metrics = [];
+      var slaObject = {};
+      slaObject.metrics = [];
       var metricString;
       var metricsArray;
 
@@ -38,8 +40,10 @@
  
       var metricObject;
 
+      // filter sla metric data
+
       // let's go through the policies
-      slas.policy_metrics.forEach(function(policy, index, array) {
+      slaJSON.policy_metrics.forEach(function(policy, index, array) {
         if (policy.metric == 'first_reply_time' || 
                       policy.metric == 'next_reply_time') {
           metricString = 'reply_time';
@@ -55,11 +59,11 @@
           
         metrics[metricString].forEach(function(eventMetric, position, marray) {
           // let's get the name of our SLA policy applied to the ticket
-          if (buildReturn['title'] === undefined && 
+          if (slaObject['title'] === undefined && 
                   eventMetric.type == 'apply_sla') {
-            buildReturn['title'] = eventMetric.sla.policy.title;
-            buildReturn['time'] = eventMetric.time;
-            buildReturn['userTime'] = self.userTime(buildReturn['time']);
+            slaObject['title'] = eventMetric.sla.policy.title;
+            slaObject['time'] = eventMetric.time;
+            slaObject['userTime'] = self.userTime(slaObject['time']);
           }
          
           // let's not include measure or update_status in our results
@@ -77,10 +81,10 @@
           }
         });
 
-        buildReturn.metrics.push(metricObject);
+        slaObject.metrics.push(metricObject);
       });
 
-      return buildReturn;
+      return slaObject;
     },
 
     userTime: function(timestamp) {
@@ -106,25 +110,37 @@
     init: function(e) {
       this.switchTo('loading');
       this.ajax('getTicketSlaData').done(function(data) {
+        
         // only available to professional + plans
-        slas = data.ticket.slas;
-        slas.policies = slas.policy_metrics; // making this easier
-        slas.metrics = data.ticket.metric_events;
-
-        console.log(slas.policies);
-
-        if (slas.policies.length < 1) {
-
-          this.switchTo('noslas');
-
+        var slaJSON = data.ticket.slas;
+ 
+        if (slaJSON === undefined || slaJSON.policy_metrics.length < 1) {
+          this.switchTo('noslas');  
+          
         } else {
 
-          var slaInfoSend = this.slaInfo(slas);
+          var slaObject = {};
+          var metric_events = data.ticket.metric_events;
+          // attach each metrics array to its associated policy metrics
+          var changedKey;
+
+          slaObject.targets = _.map(slaJSON.policy_metrics, 
+            function(target) {
+              if (target.metric == 'first_reply_time' ||
+                  target.metric == 'next_reply_time') {
+
+                target.history = metric_events['reply_time'];
+
+              } else {
+                target.history = metric_events[target.metric];
+              }
+              return target;
+            });
 
           this.switchTo('slainfo', {
-            nameTime: slaInfoSend,
+            sla: slaObject,
           });
-        }
+       }
       });
     }
   };
