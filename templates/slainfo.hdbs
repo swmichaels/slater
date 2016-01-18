@@ -3,7 +3,6 @@
 <p>Policy Name: {{nameTime.title}}</p>
 <p>Policy Time Applied: {{nameTime.userTime}}</p>
 <hr />
-<p>FRT: {{FRT}}</p>
 <hr />
 <p>hmm, I see #{{nameTime.metrics.length}} SLA targets:</p>
 <ul>

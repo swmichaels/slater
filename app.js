@@ -20,12 +20,10 @@
       }
     },
 
-    slaInfo: function(slas, metrics) {
-
+    slaInfo: function(slas) {
       var self = this;
 
-      if (slas.length < 1) { return undefined; }
-
+      var metrics = slas.metrics;
       // houses the return object we will send:
       // combo of slas endpoint and event metrics
       var buildReturn = {};
@@ -106,37 +104,28 @@
     },
 
     init: function(e) {
-      if (e.firstLoad) { this.switchTo('testing'); console.log('first load'); }
-      var slas;
-      var metric_events;
-      this.ajax('getTicketSlaData')
-        .done(function(data) {
-          // only available to professional + plans
-          slas = data.ticket.slas;
+      this.switchTo('loading');
+      this.ajax('getTicketSlaData').done(function(data) {
+        // only available to professional + plans
+        slas = data.ticket.slas;
+        slas.policies = slas.policy_metrics; // making this easier
+        slas.metrics = data.ticket.metric_events;
 
-          // check if any SLA policies were applied to the ticket
-          if (slas.policy_metrics.length < 1) {
-            // no slas to highlight here
-            this.switchTo('noslas');
-          } else {
-            metric_events = data.ticket.metric_events;
- 
-            //console.log(slas);
-            //console.log(metric_events);
+        console.log(slas.policies);
 
-            // todo: convert this to user's local time
-                  
-            var slaInfoSend = this.slaInfo(slas, metric_events);
-          
-            console.log(slaInfoSend);
+        if (slas.policies.length < 1) {
 
-            var FRT = this.firstReplyTime(metric_events);
-            this.switchTo('slainfo', {
-              nameTime: slaInfoSend,
-              FRT: FRT.FRT
-            });
-          }
-       });
+          this.switchTo('noslas');
+
+        } else {
+
+          var slaInfoSend = this.slaInfo(slas);
+
+          this.switchTo('slainfo', {
+            nameTime: slaInfoSend,
+          });
+        }
+      });
     }
   };
 }());
