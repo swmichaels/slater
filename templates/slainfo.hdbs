@@ -1,8 +1,10 @@
 <p>There was most certainly an SLA policy applied on this ticket</p>
-
+<hr />
 <p>Policy Name: {{nameTime.title}}</p>
-<p>Policy Time Applied: {{nameTime.time}}</p>
-
+<p>Policy Time Applied: {{nameTime.userTime}}</p>
+<hr />
+<p>FRT: {{FRT}}</p>
+<hr />
 <p>hmm, I see #{{metrics.length}} SLA targets:</p>
 <ul>
   {{#each metrics}}
@@ -11,3 +13,7 @@
     <hr />
   {{/each}}
 </ul>
+
+<svg width="30" height="30">
+<circle cx="12.5" cy="12.5" r="12.5" fill="green" />
+</svg>

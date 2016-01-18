@@ -44,7 +44,39 @@
         }
       }
 
+      // use moment.js timezone to get user's time as well
+
+      // todo: make a setting for am/pm vs 24h time
+      // get user timezone
+
+      var currentAccount = this.currentAccount();
+      var currentUser = this.currentUser();
+
+      var currentTimezone = currentUser.timeZone() || currentAccount.timeZone();
+
+      buildReturn['userTime'] = this.userTime(buildReturn.time);
+
       return buildReturn;
+    },
+
+    userTime: function(timestamp) {
+      var currentAccount = this.currentAccount();
+      var currentUser = this.currentUser();
+
+      var currentTimezone = currentUser.timeZone() || currentAccount.timeZone();
+
+      return moment(timestamp).tz(currentTimezone.ianaName()).format('YYYY-MM-DD [at] HH:mm:ss');
+  },
+
+    firstReplyTime: function(metrics) {
+      var replyTimeArray = metrics['reply_time']; 
+      console.log(replyTimeArray);
+      for (var i = 0; i < replyTimeArray.length; i++) {
+        if (replyTimeArray[i].type == 'fulfill') {
+          return { FRT: this.userTime(replyTimeArray[i].time) };
+        }
+      }
+      return { FRT: 'No first reply time yet' };
     },
 
     init: function(e) {
@@ -67,16 +99,15 @@
             console.log(metric_events);
 
             // todo: convert this to user's local time
-            var userTimezone = this.currentUser().timeZone();
-            var offset = userTimezone.offset(); // timezone offset in minutes
-            
+                  
             var slaInfo = this.slaName(slas, metric_events);
-            console.log(slaInfo);
-            
+           
+            var FRT = this.firstReplyTime(metric_events);
             this.switchTo('slainfo', {
               nameTime: slaInfo,
               metrics: slas.policy_metrics, 
-              metric_events: metric_events 
+              metric_events: metric_events,
+              FRT: FRT.FRT
             });
           }
        });
