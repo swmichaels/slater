@@ -5,7 +5,8 @@
     events: {
       'app.activated': 'init',
       'app.willDestroy': function() { console.log('app is about ' +
-                                                  'to be destroyed'); }
+                                                  'to be destroyed'); },
+      'ticket.save': 'init'
     },
 
     requests: {
@@ -176,11 +177,11 @@
 
           // get SLA Policy name and time applied to ticket using
           // sla data's first element
-          var info = this.getPolicyInfo(slaObject.targets[0]['history']);
+          //var info = this.getPolicyInfo(slaObject.targets[0]['history']);
 
           // populate important status data
-          slaObject.title = info.title;
-          slaObject.time = info.time;
+          //slaObject.title = info.title;
+          //slaObject.time = info.time;
 
           // add user's local times in all places where a timestamp exists
           this.userTimes(slaObject.targets);
@@ -190,6 +191,9 @@
             sla: slaObject,
           });
         }
+      })
+      .fail(function(err) {
+        this.switchTo('noslas.hdbs');
       });
     }
   };

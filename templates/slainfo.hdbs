@@ -1,25 +1,35 @@
-<p>There was most certainly an SLA policy applied on this ticket</p>
-<hr />
-<p>Policy Name: {{sla.title}}</p>
-<p>Policy Time Applied: {{sla.time}}</p>
-<hr />
-<p>hmm, I see #{{sla.targets.length}} SLA targets:</p>
-<ul>
-  {{#each sla.targets}}
-    <li>Metric name: {{metric}}</li>
-    <li>Stage: {{stage}}</li>
-    <hr />
-    {{#each history}}
-      <li>{{type}}</li>
-      <li>{{time}}</li>
-      <li>{{usertime}}</li>
-    {{/each}}
-    <hr />
-  {{/each}}
-</ul>
+<div class="detected">
+<h3>SLA policy detected</h3>
 
-<svg width="30" height="30">
-<circle cx="12.5" cy="12.5" r="12.5" fill="green" />
+<h4>{{sla.targets.length}} targets</h4>
+<hr />
+</div>
+
+<div class="targets">
+{{#each sla.targets}}
+<p>Target: {{metric}}</p>
+  {{#if breach_at}}
+    <p>Breached at {{breach_at}}</p>
+  {{else}}
+    <p>Breached: no</p>
+  {{/if}}</p>
+  <p>Metric: {{stage}}</p>
+  <hr />
+  <h5>History</h5>
+  {{#each history}}
+    <span class="timestamp">{{usertime}}</span> <span class="type">{{type}}</span>
+    {{#if sla}}
+      <br />
+      <span class="policy">Policy title: {{sla.policy.title}}</span>
+    {{/if}}
+    <br />
+  {{/each}}
+  <hr />
+{{/each}}
+</div>
+
+<svg width="14" height="14">
+<circle cx="7" cy="7" r="5" fill="green" />
 </svg>
 <svg width="30" height="30">
 <circle cx="12.5" cy="12.5" r="12.5" fill="red" />
@@ -32,5 +42,8 @@
 </svg>
 <svg width="30" height="30">
 <circle cx="12.5" cy="12.5" r="12.5" fill="blue" />
+</svg>
+<svg width="14" height="14">
+<circle cx="7" cy="7" r="5" fill="green" />
 </svg>
 
