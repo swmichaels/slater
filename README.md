@@ -1,4 +1,4 @@
-# App name
+# SLAter - Sam's SLA debugging tool
 
 Show information about your ticket's SLAs.
 
