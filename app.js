@@ -93,7 +93,8 @@
 
       var currentTimezone = currentUser.timeZone() || currentAccount.timeZone();
 
-      return moment(timestamp).tz(currentTimezone.ianaName()).format('YYYY-MM-DD [at] hh:mm:ss a');
+      return moment(timestamp).tz(currentTimezone.ianaName())
+        .format('YYYY-MM-DD [at] hh:mm:ss a z');
   },
 
     firstReplyTime: function(metrics) {
@@ -107,40 +108,88 @@
       return { FRT: 'No first reply time yet' };
     },
 
+    // Remove objects from array containing type: measure or type:
+    // update_status
+    removeHistoryTypes: function(array) {
+      return _.filter(array, function(e) {
+        return (e.type != 'measure' && e.type != 'update_status');
+      });
+    },
+
+    attachMetricEvents: function(slaJSON, metric_events) {
+
+      var targets = _.map(slaJSON.policy_metrics, 
+          function(target) {
+            if (target.metric == 'first_reply_time' ||
+                target.metric == 'next_reply_time') {
+
+              target.history = metric_events['reply_time'];
+
+            } else {
+              target.history = metric_events[target.metric];
+            }
+            return target;
+          });
+      return targets;
+    },
+
+    // gets the SLA Policy name and time applied to ticket
+    getPolicyInfo: function(array) {
+      var element = _.chain(array).where({ type: 'apply_sla' }).last().value();
+      return {title: element.sla.policy.title, time: element.time};
+
+    },
+
+    // loop through all history arrays and add a usertime key/value pair
+    userTimes: function(targets) {
+      var self = this;
+      _.each(targets, function(target) {
+        _.each(target.history, function (history) {
+          history['usertime'] = self.userTime(history.time); 
+        });
+      });
+    },
+
     init: function(e) {
       this.switchTo('loading');
       this.ajax('getTicketSlaData').done(function(data) {
-        
+        var self = this;
         // only available to professional + plans
         var slaJSON = data.ticket.slas;
- 
+
         if (slaJSON === undefined || slaJSON.policy_metrics.length < 1) {
           this.switchTo('noslas');  
-          
+
         } else {
 
+          // create an object to pass to the templates
           var slaObject = {};
-          var metric_events = data.ticket.metric_events;
-          // attach each metrics array to its associated policy metrics
-          var changedKey;
+          
+          // merge sideloaded data
+          slaObject.targets = this.attachMetricEvents(slaJSON, 
+              data.ticket.metric_events);
 
-          slaObject.targets = _.map(slaJSON.policy_metrics, 
-            function(target) {
-              if (target.metric == 'first_reply_time' ||
-                  target.metric == 'next_reply_time') {
+          // strip extra types
+          _.each(slaObject.targets, function(target) {
+            target.history = self.removeHistoryTypes(target.history);
+          });
 
-                target.history = metric_events['reply_time'];
+          // get SLA Policy name and time applied to ticket using
+          // sla data's first element
+          var info = this.getPolicyInfo(slaObject.targets[0]['history']);
 
-              } else {
-                target.history = metric_events[target.metric];
-              }
-              return target;
-            });
+          // populate important status data
+          slaObject.title = info.title;
+          slaObject.time = info.time;
 
+          // add user's local times in all places where a timestamp exists
+          this.userTimes(slaObject.targets);
+
+          console.log(slaObject);
           this.switchTo('slainfo', {
             sla: slaObject,
           });
-       }
+        }
       });
     }
   };

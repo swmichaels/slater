@@ -1,8 +1,7 @@
 <p>There was most certainly an SLA policy applied on this ticket</p>
 <hr />
-<p>Policy Name: {{nameTime.title}}</p>
-<p>Policy Time Applied: {{nameTime.userTime}}</p>
-<hr />
+<p>Policy Name: {{sla.title}}</p>
+<p>Policy Time Applied: {{sla.time}}</p>
 <hr />
 <p>hmm, I see #{{sla.targets.length}} SLA targets:</p>
 <ul>
@@ -13,6 +12,7 @@
     {{#each history}}
       <li>{{type}}</li>
       <li>{{time}}</li>
+      <li>{{usertime}}</li>
     {{/each}}
     <hr />
   {{/each}}
