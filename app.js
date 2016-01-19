@@ -65,12 +65,20 @@
     },
 
     // loop through all history arrays and add a usertime key/value pair
-    userTimes: function(targets) {
+    historyUserTimes: function(targets) {
       var self = this;
       _.each(targets, function(target) {
         _.each(target.history, function (history) {
           history['usertime'] = self.userTime(history.time); 
         });
+      });
+    },
+
+    // loop through all history arrays and add a usertime key/value pair
+    breachUserTimes: function(array) {
+      var self = this;
+      _.each(array, function(element) {
+        element['breach_atusertime'] = self.userTime(element.breach_at);
       });
     },
 
@@ -107,7 +115,8 @@
           //slaObject.time = info.time;
 
           // add user's local times in all places where a timestamp exists
-          this.userTimes(slaObject.targets);
+          this.historyUserTimes(slaObject.targets);
+          this.breachUserTimes(slaObject.targets);
 
           console.log(slaObject);
           this.switchTo('slainfo', {

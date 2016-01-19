@@ -1,26 +1,26 @@
 <div class="detected">
 <h3>SLA policy detected</h3>
 
-<h4>{{sla.targets.length}} targets</h4>
+<h4><span class="target_size">{{sla.targets.length}}</span> targets</h4>
 <hr />
 </div>
 
 <div class="targets">
 {{#each sla.targets}}
-<p>Target: {{metric}}</p>
+<p>Target: <span class="metric_title">{{metric}}</span></p>
   {{#if breach_at}}
-    <p>Breached at {{breach_at}}</p>
+    Status: <span class="label label-important">Breached</span> <span class="label label-important">{{breach_atusertime}}</span><br />
   {{else}}
-    <p>Breached: no</p>
+    Status: <span class="label label-success">No breaches</span><br />
   {{/if}}</p>
-  <p>Metric: {{stage}}</p>
-  <hr />
+  <p>Metric: <span class="label label-info">{{stage}}</span></p>
   <h5>History</h5>
   {{#each history}}
     <span class="timestamp">{{usertime}}</span> <span class="type">{{type}}</span>
     {{#if sla}}
       <br />
-      <span class="policy">Policy title: {{sla.policy.title}}</span>
+      <span class="label label-info">SLA policy applied</span>
+      <span class="sla_policy_title">{{sla.policy.title}}</span>
     {{/if}}
     <br />
   {{/each}}
@@ -28,6 +28,7 @@
 {{/each}}
 </div>
 
+<!--
 <svg width="14" height="14">
 <circle cx="7" cy="7" r="5" fill="green" />
 </svg>
@@ -46,4 +47,4 @@
 <svg width="14" height="14">
 <circle cx="7" cy="7" r="5" fill="green" />
 </svg>
-
+-->
