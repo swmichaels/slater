@@ -21,73 +21,7 @@
       }
     },
 
-
-    // returns a nice juicy piece of SLA policy + metrics
-    slaInfo: function(slaJSON) {
-      var self = this;
-
-      var metrics = slaJSON.events;
-      // houses the return object we will send:
-      // combo of slas endpoint and event metrics
-      var slaObject = {};
-      slaObject.metrics = [];
-      var metricString;
-      var metricsArray;
-
-      var currentAccount = this.currentAccount();
-      var currentUser = this.currentUser();
-
-      var currentTimezone = currentUser.timeZone() || currentAccount.timeZone();
- 
-      var metricObject;
-
-      // filter sla metric data
-
-      // let's go through the policies
-      slaJSON.policy_metrics.forEach(function(policy, index, array) {
-        if (policy.metric == 'first_reply_time' || 
-                      policy.metric == 'next_reply_time') {
-          metricString = 'reply_time';
-        } else {
-          metricString = policy.metric;
-        }
-
-        metricObject = {};
-        metricObject.steps = [];
-        metricObject.title = policy.metric;
-        metricObject.stage= policy.stage;
-        var reply_time_count = 0;
-          
-        metrics[metricString].forEach(function(eventMetric, position, marray) {
-          // let's get the name of our SLA policy applied to the ticket
-          if (slaObject['title'] === undefined && 
-                  eventMetric.type == 'apply_sla') {
-            slaObject['title'] = eventMetric.sla.policy.title;
-            slaObject['time'] = eventMetric.time;
-            slaObject['userTime'] = self.userTime(slaObject['time']);
-          }
-         
-          // let's not include measure or update_status in our results
-          if (eventMetric.type == 'measure' ||
-                   eventMetric.type == 'update_status') {
-            
-            return;
-
-          } else {
-            metricObject.steps.push({
-              type: eventMetric.type,
-              time: eventMetric.time,
-              userTime: self.userTime(eventMetric.time)
-            });
-          }
-        });
-
-        slaObject.metrics.push(metricObject);
-      });
-
-      return slaObject;
-    },
-
+    // converts ZD API timestamps into User's local time
     userTime: function(timestamp) {
       var currentAccount = this.currentAccount();
       var currentUser = this.currentUser();
@@ -96,17 +30,6 @@
 
       return moment(timestamp).tz(currentTimezone.ianaName())
         .format('YYYY-MM-DD [at] hh:mm:ss a z');
-  },
-
-    firstReplyTime: function(metrics) {
-      var replyTimeArray = metrics['reply_time']; 
-      // console.log(replyTimeArray);
-      for (var i = 0; i < replyTimeArray.length; i++) {
-        if (replyTimeArray[i].type == 'fulfill') {
-          return { FRT: this.userTime(replyTimeArray[i].time) };
-        }
-      }
-      return { FRT: 'No first reply time yet' };
     },
 
     // Remove objects from array containing type: measure or type:
