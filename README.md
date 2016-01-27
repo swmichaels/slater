@@ -1,4 +1,4 @@
-# SLAter - Sam's SLA debugging tool
+# SLAter - SLA Event Tracking Tool
 
 Show information about your ticket's SLAs.
 
@@ -10,4 +10,4 @@ Please submit bug reports to swmichaels. Pull requests are welcome.
 
 ### Screenshot(s):
 
-![Screenshot 1](assets/yeah.png)
+![Screenshot 1](assets/yeah2.png)

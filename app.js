@@ -4,9 +4,9 @@
 
     events: {
       'app.activated': 'init',
+      'ticket.updated': 'init',
       'app.willDestroy': function() { console.log('app is about ' +
-                                                  'to be destroyed'); },
-      'ticket.save': 'init'
+                                                  'to be destroyed'); },  
     },
 
     requests: {
