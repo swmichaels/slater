@@ -1,30 +1,30 @@
 <div class="detected">
-<h3>SLA policy detected</h3>
-
-<h4><span class="target_size">{{sla.targets.length}}</span> targets</h4>
-<hr />
+<h3>SLA Policy Detected</h3>
+<h4><span class="target_size">{{sla.targets.length}}</span> Target(s)</h4>
+<hr size="3" noshade>
 </div>
 
 <div class="targets">
 {{#each sla.targets}}
-<p>Target: <span class="metric_title">{{metric}}</span></p>
+  <p>Target: <span class="metric_title">{{t metric}}</span></p>
   {{#if breach_at}}
     Status: <span class="label label-important">Breached</span> <span class="label label-important">{{breach_atusertime}}</span><br />
   {{else}}
-    Status: <span class="label label-success">No breaches</span><br />
+    Status: <span class="label label-success">No Breaches</span><br />
   {{/if}}</p>
-  <p>Metric: <span class="label label-info">{{stage}}</span></p>
+  <p>Metric: <span class="label label-info">{{t stage}}</span></p>
+  <hr />
   <h5>History</h5>
   {{#each history}}
-    <span class="timestamp">{{usertime}}</span> <span class="type">{{type}}</span>
+    <span class="timestamp">{{usertime}}</span> <span class="type">{{t type}}</span>
     {{#if sla}}
       <br />
-      <span class="label label-info">SLA policy applied</span>
-      <span class="sla_policy_title">{{sla.policy.title}}</span>
+      <span class="label label-info">SLA Policy Applied</span>
+      <b><span class="sla_policy_title">{{sla.policy.title}}</span></b>
     {{/if}}
     <br />
   {{/each}}
-  <hr />
+  <hr size="3" noshade>
 {{/each}}
 </div>
 
