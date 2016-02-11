@@ -6,7 +6,7 @@
       'app.activated': 'init',
       'app.willDestroy': function() { console.log('app is about ' +
                                                   'to be destroyed'); },
-      'ticket.save': 'init'
+      'ticket.updated': 'init'
     },
 
     requests: {
