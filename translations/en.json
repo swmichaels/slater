@@ -1,8 +1,9 @@
 {
-  "agent_work_time": "Agent Work Time",
-  "requester_wait_time": "Requester Wait Time",
-  "next_reply_time": "Next Reply Time",
   "first_reply_time": "First Reply Time",
+  "requester_wait_time": "Requester Wait Time",
+  "agent_work_time": "Agent Work Time",
+  "next_reply_time": "Next Reply Time",
+  "periodic_update_time": "Periodic Update",
   "activate": "Activated",
   "fulfill": "Fulfilled",
   "apply": "Applied",
@@ -12,5 +13,12 @@
   "pause": "Paused",
   "active": "Active",
   "paused": "Paused",
-  "periodic_update_time": "Periodic Update"
+  "no_breaches": "No Breaches",
+  "sla_detected": "SLA Policy Detected",
+  "sla_not_detected": "No SLA Policy Detected",
+  "target": "Target",
+  "status": "Status",
+  "metric_field": "Metric",
+  "history": "History",
+  "sla_policy_applied": "SLA Policy Applied"
 }
