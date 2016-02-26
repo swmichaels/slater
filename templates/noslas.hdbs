@@ -1,4 +1,4 @@
 <div class="detected">
-<h3>{{t ""sla_not_detected""}}</h3>
+<h3>{{t "sla_not_detected"}}</h3>
 </div>
 
