@@ -11,15 +11,16 @@
 
     requests: {
       getTicketSlaData: function() {
-        var curTicket = this.ticket();
+        var curTicket = this.ticket().id();
         return {
           type: 'GET',
-          url: '/api/v2/tickets/' + curTicket.id() +
+          url: '/api/v2/tickets/' + curTicket +
             '?include=slas,metric_events',
           dataType: 'json'
         };
       }
     },
+
 
     // converts ZD API timestamps into User's local time
     userTime: function(timestamp) {
@@ -32,8 +33,7 @@
         .format('YYYY-MM-DD [at] hh:mm:ss a z');
     },
 
-    // Remove objects from array containing type: measure or type:
-    // update_status
+    // Remove objects from array containing "type: measure" or "type: update_status"
     removeHistoryTypes: function(array) {
       return _.filter(array, function(e) {
         return (e.type != 'measure' && e.type != 'update_status');
@@ -88,9 +88,12 @@
         var self = this;
         // only available to professional + plans
         var slaJSON = data.ticket.slas;
+        var thisID = self.ticket().id();
 
         if (slaJSON === undefined || slaJSON.policy_metrics.length < 1) {
-          this.switchTo('noslas');  
+          this.switchTo('noslas', {
+          	ticketid:thisID,
+          });  
 
         } else {
 
@@ -106,14 +109,6 @@
             target.history = self.removeHistoryTypes(target.history);
           });
 
-          // get SLA Policy name and time applied to ticket using
-          // sla data's first element
-          //var info = this.getPolicyInfo(slaObject.targets[0]['history']);
-
-          // populate important status data
-          //slaObject.title = info.title;
-          //slaObject.time = info.time;
-
           // add user's local times in all places where a timestamp exists
           this.historyUserTimes(slaObject.targets);
           this.breachUserTimes(slaObject.targets);
@@ -121,11 +116,14 @@
           console.log(slaObject);
           this.switchTo('slainfo', {
             sla: slaObject,
+            ticketid: thisID,
           });
         }
       })
       .fail(function(err) {
-        this.switchTo('noslas.hdbs');
+        this.switchTo('noslas', {
+        	ticketid:thisID
+        });
       });
     }
   };
