@@ -1,18 +1,18 @@
 <div class="detected">
 <h3>{{t "sla_detected"}}</h3>
-<h4><span class="target_size">{{sla.targets.length}}</span> {{t "target"}}(s)</h4>
+<h4><span class="target_size">{{sla.targets.length}}</span> {{t "time"}} {{t "target"}}</h4>
 <hr size="3" noshade>
 </div>
 
 <div class="targets">
 {{#each sla.targets}}
-  <p>{{t "target"}}: <span class="metric_title">{{t metric}}</span></p>
+  <p>{{t "target_name"}}: <span class="metric_title"><b>{{t metric}}</b></span></p>
+  <p>{{t "metric_stage"}}: <span class="label label-info">{{t stage}}</span><br />
   {{#if breach_at}}
-    Status: <span class="label label-important">Breached</span> <span class="label label-important">{{breach_atusertime}}</span><br />
+    {{t "breach_at"}}: <span class="label label-important">{{breach_atusertime}}</span><br />
   {{else}}
-    {{t "status"}}: <span class="label label-success">{{t "no_breaches"}}</span><br />
+    {{t "breach_at"}}: <span class="label label-success">{{t "no_breaches"}}</span><br />
   {{/if}}</p>
-  <p>{{t "metric_field"}}: <span class="label label-info">{{t stage}}</span></p>
   <hr />
   <h5>{{t "history"}}</h5>
   {{#each history}}
@@ -28,23 +28,6 @@
 {{/each}}
 </div>
 
-<!--
-<svg width="14" height="14">
-<circle cx="7" cy="7" r="5" fill="green" />
-</svg>
-<svg width="30" height="30">
-<circle cx="12.5" cy="12.5" r="12.5" fill="red" />
-</svg>
-<svg width="30" height="30">
-<circle cx="12.5" cy="12.5" r="12.5" fill="yellow" />
-</svg>
-<svg width="30" height="30">
-<circle cx="12.5" cy="12.5" r="12.5" fill="orange" />
-</svg>
-<svg width="30" height="30">
-<circle cx="12.5" cy="12.5" r="12.5" fill="blue" />
-</svg>
-<svg width="14" height="14">
-<circle cx="7" cy="7" r="5" fill="green" />
-</svg>
--->
+<div align="right">
+<a href="/api/v2/tickets/{{ticketid}}?include=slas,metric_events" target="_blank"><span class="label label-default">{{t "sla_log"}}</span></a>
+</div>

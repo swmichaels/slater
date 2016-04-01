@@ -10,4 +10,4 @@ Please submit bug reports to swmichaels. Pull requests are welcome.
 
 ### Screenshot(s):
 
-![Screenshot 1](assets/yeah2.png)
+![Screenshot 1](assets/screenshot.png)

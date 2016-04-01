@@ -1,4 +1,8 @@
 <div class="detected">
 <h3>{{t "sla_not_detected"}}</h3>
+<hr size="3" noshade>
 </div>
 
+<div align="right">
+<a href="/api/v2/tickets/{{ticketid}}?include=slas,metric_events" target="_blank"><span class="label label-default">{{t "sla_log"}}</span></a>
+</div>
