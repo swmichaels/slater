@@ -4,7 +4,7 @@
 </header>
 <section data-main></section>
 <footer>
-  <a href="mailto:{{author.email}}">
-    {{contact}}
+  <a href="https://github.com/swmichaels/slater" target="_blank">
+    Contact Developer
   </a>
 </footer>
