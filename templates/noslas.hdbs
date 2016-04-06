@@ -1,6 +1,8 @@
 <div class="detected">
+<span align="center">
 <h3>{{t "sla_not_detected"}}</h3>
-<hr size="3" noshade>
+</span>
+<br />
 </div>
 
 <div align="right">
