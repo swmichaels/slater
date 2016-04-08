@@ -25,5 +25,7 @@
   "sla_policy_applied": "Política de SLA Aplicada",
   "target_name": "Métrica",
   "target": "de Tiempo",
-  "time": "Objetivo(s)"
+  "time": "Objetivo(s)",
+  "troubleshoot_slas": "Troubleshoot",
+  "troubleshoot_slas_link": "https://support.zendesk.com/hc/en-us/articles/218161007"
 }
