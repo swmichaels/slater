@@ -121,10 +121,9 @@
         }
       })
       .fail(function(err) {
-        this.switchTo('noslas', {
-        	ticketid:thisID
-        });
+      	this.switchTo('noslas');
       });
     }
   };
 }());
+

@@ -3,8 +3,8 @@
   <h3>{{setting "name"}}</h3>
 </header>
 <section data-main></section>
-<footer>
-  <a href="mailto:{{author.email}}">
-    {{contact}}
+<!--<footer>
+  <a href="https://github.com/swmichaels/slater" target="_blank">
+    Contact Developer
   </a>
-</footer>
+</footer>-->
