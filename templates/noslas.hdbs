@@ -2,7 +2,7 @@
 <span align="center">
 <h3>{{t "sla_not_detected"}}</h3>
 </span>
-<br />
+<hr size="3" noshade>
 </div>
 
 <div align="center">
