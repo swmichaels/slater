@@ -1,36 +1,38 @@
 <div class="detected">
 <span align="center">
 <h3>{{t "sla_detected"}}</h3>
-<h4><span class="target_size">{{sla.targets.length}}</span> {{t "time"}} {{t "target"}}</h4>
+<a data-toggle="target_size" id=target_toggle><h4>{{sla.targets.length}} {{t "time"}} {{t "target"}}</h4></a>
 </span>
 <hr size="3" noshade>
 </div>
 
 <div class="targets">
 {{#each sla.targets}}
-  <p>{{t "target_name"}}: <span class="metric_title"><b>{{t metric}}</b></span></p>
+  <p>{{t "target_name"}}: <span class={{metric}}><b>{{t metric}}</b></span></p>
   <p>{{t "metric_stage"}}: <span class="label label-info">{{t stage}}</span><br />
   {{#if breach_at}}
     {{t "breach_at"}}: <span class="label label-important">{{breach_atusertime}}</span><br />
   {{else}}
-    {{t "breach_at"}}: <span class="label label-success">{{t "no_breaches"}}</span><br />
+    {{t "breach_at"}}: <span class="label label-success" id={{metric}}_success>{{t "no_breaches"}}</span><br />
   {{/if}}</p>
-  <hr />
-  <h5>{{t "history"}}</h5>
+  <a data-toggle="history_toggle" id={{metric}}_toggle><b>{{t "history"}}</b></a>
+  <p class="history_complete" id={{metric}}>
   {{#each history}}
-    <span class="timestamp">{{usertime}}</span> <span class="type">{{t type}}</span>
+    <span class="timestamp">{{usertime}}</span> <span class="type" id={{type}}>{{t type}}</span>
     {{#if sla}}
       <br />
       <span class="label label-info">{{t "sla_policy_applied"}}</span>
       <b><span class="sla_policy_title">{{sla.policy.title}}</span></b>
     {{/if}}
     <br />
-  {{/each}}
+  {{/each}}</p>
   <hr size="3" noshade>
 {{/each}}
 </div>
 
-<div align="right">
+<div align="center">
 <a href="{{t "about_slas_link"}}" target="_blank"><span class="label label-default">{{t "about_slas"}}</span></a>
+<a href="{{t "troubleshoot_slas_link"}}" target="_blank"><span class="label label-default">{{t "troubleshoot_slas"}}</span></a>
 <a href="/api/v2/tickets/{{ticketid}}?include=slas,metric_events" target="_blank"><span class="label label-default">{{t "sla_log"}}</span></a>
 </div>
+  

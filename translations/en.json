@@ -1,7 +1,7 @@
 {
   "about_slas": "About SLAs",
   "about_slas_link": "https://support.zendesk.com/hc/en-us/articles/204770038",
-  "achieved": "Fulfilled",
+  "achieved": "Achieved",
   "activate": "Activated",
   "active": "Active",
   "agent_work_time": "Agent Work Time",
@@ -14,7 +14,7 @@
   "history": "History",
   "metric_stage": "Metric Status",
   "next_reply_time": "Next Reply Time",
-  "no_breaches": "No Breaches",
+  "no_breaches": "No Current Breach",
   "pause": "Paused",
   "paused": "Paused",
   "periodic_update_time": "Periodic Update",
@@ -25,5 +25,7 @@
   "sla_policy_applied": "SLA Policy Applied",
   "target_name": "Metric Name",
   "target": "Target(s)",
-  "time": "Time"
+  "time": "Time",
+  "troubleshoot_slas": "Troubleshoot",
+  "troubleshoot_slas_link": "https://support.zendesk.com/hc/en-us/articles/218161007"
 }

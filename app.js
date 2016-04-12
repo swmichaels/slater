@@ -4,9 +4,31 @@
 
     events: {
       'app.activated': 'init',
-      'app.willDestroy': function() { console.log('app is about ' +
-                                                  'to be destroyed'); },
-      'ticket.updated': 'init'
+      'ticket.updated': 'init',      
+      'app.willDestroy': function() { 
+        console.log('app is about to be destroyed'); 
+      },
+      'click #target_toggle': function(event) {
+        this.$('.targets').toggle();
+      },
+      'click #first_reply_time_toggle': function(event) {
+        this.$('#first_reply_time').toggle();
+      }, 
+      'click #next_reply_time_toggle': function(event) {
+        this.$('#next_reply_time').toggle();
+      }, 
+      'click #requester_wait_time_toggle': function(event) {
+        this.$('#requester_wait_time').toggle();
+      }, 
+      'click #agent_work_time_toggle': function(event) {
+        this.$('#agent_work_time').toggle();
+      },      
+      'click #periodic_update_time_toggle': function(event) {
+        this.$('#periodic_update_time').toggle();
+      },
+      'click #resolution_time_toggle': function(event) {
+        this.$('#resolution_time').toggle();
+      },      
     },
 
     requests: {
@@ -14,21 +36,17 @@
         var curTicket = this.ticket().id();
         return {
           type: 'GET',
-          url: '/api/v2/tickets/' + curTicket +
-            '?include=slas,metric_events',
+          url: '/api/v2/tickets/' + curTicket + '?include=slas,metric_events',
           dataType: 'json'
         };
       }
     },
 
-
     // converts ZD API timestamps into User's local time
     userTime: function(timestamp) {
       var currentAccount = this.currentAccount();
       var currentUser = this.currentUser();
-
       var currentTimezone = currentUser.timeZone() || currentAccount.timeZone();
-
       return moment(timestamp).tz(currentTimezone.ianaName())
         .format('YYYY-MM-DD [at] hh:mm:ss a z');
     },
@@ -41,14 +59,11 @@
     },
 
     attachMetricEvents: function(slaJSON, metric_events) {
-
       var targets = _.map(slaJSON.policy_metrics, 
           function(target) {
             if (target.metric == 'first_reply_time' ||
                 target.metric == 'next_reply_time') {
-
               target.history = metric_events['reply_time'];
-
             } else {
               target.history = metric_events[target.metric];
             }
@@ -61,7 +76,6 @@
     getPolicyInfo: function(array) {
       var element = _.chain(array).where({ type: 'apply_sla' }).last().value();
       return {title: element.sla.policy.title, time: element.time};
-
     },
 
     // loop through all history arrays and add a usertime key/value pair
@@ -86,7 +100,6 @@
       this.switchTo('loading');
       this.ajax('getTicketSlaData').done(function(data) {
         var self = this;
-        // only available to professional + plans
         var slaJSON = data.ticket.slas;
         var thisID = self.ticket().id();
 
@@ -121,9 +134,12 @@
         }
       })
       .fail(function(err) {
-      	this.switchTo('noslas');
+        var thisID = self.ticket().id();
+      	this.switchTo('noslas', {
+          ticketid: thisID,
+        });
       });
-    }
+    },
   };
 }());
 

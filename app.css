@@ -1,0 +1,17 @@
+div.targets {
+    display:none;
+}
+
+p.history_complete {
+	display:none;
+}
+
+span#breach.type {
+	border-style: solid;
+	color: white;
+    border-width: 3px;
+    border-bottom-width: 1px;
+    border-top-width: 1px;
+    border-color: #b9484a;
+    background-color: #b9484a;
+}
