@@ -8,6 +8,8 @@
       'app.willDestroy': function() { 
         console.log('app is about to be destroyed'); 
       },
+
+      //toggle buttons in slainfo
       'click #target_toggle': function(event) {
         this.$('.targets').toggle();
       },
@@ -28,7 +30,74 @@
       },
       'click #resolution_time_toggle': function(event) {
         this.$('#resolution_time').toggle();
+      },
+
+      //toggle buttons for glossary      
+      'click #glossary': function(event) {
+        this.switchTo('glossary', {
+          ticketid: this.ticket().id(),
+        });
+      },
+      'click #goback': 'init',   
+
+      //toggle buttons in glossary for definitions
+      'click #definition1name': function(event) {
+        this.$('#definition1').toggle();
       },      
+      'click #definition2name': function(event) {
+        this.$('#definition2').toggle();
+      },
+      'click #definition3name': function(event) {
+        this.$('#definition3').toggle();
+      },
+      'click #definition4name': function(event) {
+        this.$('#definition4').toggle();
+      },
+      'click #definition5name': function(event) {
+        this.$('#definition5').toggle();
+      },
+      'click #definition6name': function(event) {
+        this.$('#definition6').toggle();
+      },
+      'click #definition7name': function(event) {
+        this.$('#definition7').toggle();
+      },
+      'click #definition8name': function(event) {
+        this.$('#definition8').toggle();
+      },
+      'click #definition9name': function(event) {
+        this.$('#definition9').toggle();
+      },
+      'click #definition10name': function(event) {
+        this.$('#definition10').toggle();
+      },
+      'click #definition11name': function(event) {
+        this.$('#definition11').toggle();
+      },      
+      'click #definition12name': function(event) {
+        this.$('#definition12').toggle();
+      },
+      'click #definition13name': function(event) {
+        this.$('#definition13').toggle();
+      },
+      'click #definition14name': function(event) {
+        this.$('#definition14').toggle();
+      },
+      'click #definition15name': function(event) {
+        this.$('#definition15').toggle();
+      },
+      'click #definition16name': function(event) {
+        this.$('#definition16').toggle();
+      },
+      'click #definition17name': function(event) {
+        this.$('#definition17').toggle();
+      },
+      'click #definition18name': function(event) {
+        this.$('#definition18').toggle();
+      },
+      'click #definition19name': function(event) {
+        this.$('#definition19').toggle();
+      },
     },
 
     requests: {

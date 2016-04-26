@@ -15,3 +15,95 @@ span#breach.type {
     border-color: #b9484a;
     background-color: #b9484a;
 }
+
+#goback {
+    cursor: pointer;
+}
+
+#glossary {
+    cursor: pointer;
+}
+
+p.definition1 {
+	display:none;
+}
+
+p.definition2 {
+    display:none;
+}
+
+p.definition3 {
+    display:none;
+}
+
+p.definition4 {
+    display:none;
+}
+
+p.definition5 {
+    display:none;
+}
+
+p.definition6 {
+    display:none;
+}
+
+p.definition7 {
+    display:none;
+}
+
+p.definition8 {
+    display:none;
+}
+
+p.definition9 {
+    display:none;
+}
+
+p.definition10 {
+    display:none;
+}
+
+p.definition11 {
+    display:none;
+}
+
+p.definition12 {
+    display:none;
+}
+
+p.definition13 {
+    display:none;
+}
+
+p.definition14 {
+    display:none;
+}
+
+p.definition1 {
+    display:none;
+}
+
+p.definition15 {
+    display:none;
+}
+
+p.definition16 {
+    display:none;
+}
+
+p.definition17 {
+    display:none;
+}
+
+p.definition18 {
+    display:none;
+}
+
+p.definition19 {
+    display:none;
+}
+
+p.definition20 {
+    display:none;
+}
