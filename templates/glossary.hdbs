@@ -78,9 +78,13 @@
 <ul>
 <p class="definition18" id="definition18">{{t "sla_policy_gloss_def"}}</p>
 </ul>
-<a data-toggle="definition19name" id="definition19name"><li><b>{{t "target_gloss"}}</b></li></a>
+<a data-toggle="definition19name" id="definition19name"><li><b>{{t "stopped"}}</b></li></a>
 <ul>
-<p class="definition19" id="definition19">{{t "target_gloss_def"}}</p>
+<p class="definition19" id="definition19">{{t "stopped_def"}}</p>
+</ul>
+<a data-toggle="definition20name" id="definition20name"><li><b>{{t "target_gloss"}}</b></li></a>
+<ul>
+<p class="definition20" id="definition20">{{t "target_gloss_def"}}</p>
 </ul>
 <hr size="3" noshade>
 </div>

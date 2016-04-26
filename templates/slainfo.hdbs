@@ -14,7 +14,7 @@
     {{t "breach_at"}}: <span class="label label-important">{{breach_atusertime}}</span><br />
   {{else}}
     {{t "breach_at"}}: <span class="label label-success" id={{metric}}_success>{{t "no_breaches"}}</span><br />
-  {{/if}}</p>
+  {{/if}}</p><br />
   <a data-toggle="history_toggle" id={{metric}}_toggle><b>{{t "history"}}</b></a>
   <p class="history_complete" id={{metric}}>
   {{#each history}}

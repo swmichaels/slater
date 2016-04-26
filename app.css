@@ -8,12 +8,24 @@ p.history_complete {
 
 span#breach.type {
 	border-style: solid;
+    border-radius: 3px;
 	color: white;
     border-width: 3px;
-    border-bottom-width: 1px;
-    border-top-width: 1px;
+    border-bottom-width: 0px;
+    border-top-width: 0px;
     border-color: #b9484a;
     background-color: #b9484a;
+}
+
+span#fulfill.type {
+    border-style: solid;
+    border-radius: 3px;
+    color: white;
+    border-width: 3px;
+    border-bottom-width: 0px;
+    border-top-width: 0px;
+    border-color: #468847;
+    background-color: #468847;
 }
 
 #goback {

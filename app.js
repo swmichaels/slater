@@ -98,6 +98,9 @@
       'click #definition19name': function(event) {
         this.$('#definition19').toggle();
       },
+      'click #definition20name': function(event) {
+        this.$('#definition20').toggle();
+      },
     },
 
     requests: {
