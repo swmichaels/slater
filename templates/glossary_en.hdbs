@@ -5,7 +5,7 @@
 <hr size="3" noshade>
 </div>
 
-<div class="definitions">
+<div class="definitions" id="glossary_definitions">
 <a data-toggle="definition1name" id="definition1name"><li><b>{{t "activate"}}</b></li></a>
 <ul>
 <p class="definition1" id="definition1">{{t "activate_def"}}</p>

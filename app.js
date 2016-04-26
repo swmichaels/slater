@@ -34,11 +34,19 @@
 
       //toggle buttons for glossary      
       'click #glossary': function(event) {
-        this.switchTo('glossary', {
-          ticketid: this.ticket().id(),
-        });
+      	if (this.currentUser().locale() === 'es' ||
+      		this.currentUser().locale() === 'es-ES' ||
+      		this.currentUser().locale() === 'es-419') {
+      		this.switchTo('glossary_es', {
+      			ticketid: this.ticket().id(),
+      		});  
+      	} else {
+      		this.switchTo('glossary_en', {
+      			ticketid: this.ticket().id(),
+      		});
+      	}
       },
-      'click #goback': 'init',   
+      'click #goback': 'init',
 
       //toggle buttons in glossary for definitions
       'click #definition1name': function(event) {
