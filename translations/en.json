@@ -32,7 +32,7 @@
   "metric_gloss_def": "The type of measurement chosen in an SLA Policy. There are Reply Metrics (First Reply Time, Next Reply Time, Periodic Update Time) and Resolution Metrics (Requester Wait Time, Agent Work Time).",
   "metric_stage": "Metric Status",
   "next_reply_time": "Next Reply Time",
-  "next_reply_time_def": "The time between the oldest unanswered customer comment and the next public comment from an agent. This metric is fulfilled with an agent reply, and can be stopped with 'Solved' status.",
+  "next_reply_time_def": "The time between the oldest unanswered comment from an end-user and the next public comment from an agent. This metric is fulfilled with an agent reply, and can be stopped with 'Solved' status.",
   "no_breaches": "No Current Breach",
   "operation_hours": "Hours of Operation",
   "operation_hours_def": "The type of hours a Target uses. These can be Business Hours or Calendar Hours.",

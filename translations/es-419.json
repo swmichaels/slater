@@ -32,7 +32,7 @@
   "metric_gloss_def": "El tipo de medida seleccionada en la política de SLA. Existen Métricas de Respuesta (Tiempo de Primera Respuesta, Tiempo de Siguiente Respuesta, Tiempo de Actualización Periódica) y Métricas de Resolución (Tiempo de Espera del Solicitante, Tiempo de Trabajo del Agente).",
   "metric_stage": "Estado",
   "next_reply_time": "Tiempo de Siguiente Respuesta",
-  "next_reply_time_def": "El tiempo transcurrido entre el comentario más antiguo sin responder del cliente y el siguiente comentario público de un agente. Esta métrica sólo puede ser cumplida con una respuesta de un agente, y puede ser detenida con estado 'Resuelto'.",
+  "next_reply_time_def": "El tiempo transcurrido entre el comentario más antiguo sin responder de un usuario final y el siguiente comentario público de un agente. Esta métrica sólo puede ser cumplida con una respuesta de un agente, y puede ser detenida con estado 'Resuelto'.",
   "no_breaches": "Sin Incumplimiento Actual",
   "operation_hours": "Tipo de Horas",
   "operation_hours_def": "Las horas que usa un Objetivo. Éstas pueden ser Horas de Trabajo u Horas Calendario.",
