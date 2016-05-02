@@ -8,10 +8,114 @@ p.history_complete {
 
 span#breach.type {
 	border-style: solid;
+    border-radius: 3px;
 	color: white;
     border-width: 3px;
-    border-bottom-width: 1px;
-    border-top-width: 1px;
+    border-bottom-width: 0px;
+    border-top-width: 0px;
     border-color: #b9484a;
     background-color: #b9484a;
+}
+
+span#fulfill.type {
+    border-style: solid;
+    border-radius: 3px;
+    color: white;
+    border-width: 3px;
+    border-bottom-width: 0px;
+    border-top-width: 0px;
+    border-color: #468847;
+    background-color: #468847;
+}
+
+#goback {
+    cursor: pointer;
+}
+
+#glossary {
+    cursor: pointer;
+}
+
+p.definition1 {
+	display:none;
+}
+
+p.definition2 {
+    display:none;
+}
+
+p.definition3 {
+    display:none;
+}
+
+p.definition4 {
+    display:none;
+}
+
+p.definition5 {
+    display:none;
+}
+
+p.definition6 {
+    display:none;
+}
+
+p.definition7 {
+    display:none;
+}
+
+p.definition8 {
+    display:none;
+}
+
+p.definition9 {
+    display:none;
+}
+
+p.definition10 {
+    display:none;
+}
+
+p.definition11 {
+    display:none;
+}
+
+p.definition12 {
+    display:none;
+}
+
+p.definition13 {
+    display:none;
+}
+
+p.definition14 {
+    display:none;
+}
+
+p.definition1 {
+    display:none;
+}
+
+p.definition15 {
+    display:none;
+}
+
+p.definition16 {
+    display:none;
+}
+
+p.definition17 {
+    display:none;
+}
+
+p.definition18 {
+    display:none;
+}
+
+p.definition19 {
+    display:none;
+}
+
+p.definition20 {
+    display:none;
 }

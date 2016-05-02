@@ -10,8 +10,8 @@ Pull requests are welcome.
 
 ### Screenshot(s):
 
-![Screenshot 1](assets/screenshot-1.gif)
-![Screenshot 2](assets/screenshot-2.png)
-![Screenshot 3](assets/screenshot-3.png)
-![Screenshot 4](assets/screenshot-4.png)
-![Screenshot 5](assets/screenshot-5.png)
+![Screenshot 1](assets/screenshot-01.png)
+![Screenshot 2](assets/screenshot-02.png)
+![Screenshot 3](assets/screenshot-03.png)
+![Screenshot 4](assets/screenshot-04.png)
+![Screenshot 5](assets/screenshot-05.png)
