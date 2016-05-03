@@ -10,8 +10,6 @@ See information about a Zendesk ticket's SLA events.
 
 * Allows users to see when SLA metrics where applied, fulfilled, or breached.
 
-Pull requests are welcome.
-
 ### Screenshot(s):
 
 ![Screenshot 1](assets/screenshot-01.png)
@@ -19,3 +17,5 @@ Pull requests are welcome.
 ![Screenshot 3](assets/screenshot-03.png)
 ![Screenshot 4](assets/screenshot-04.png)
 ![Screenshot 5](assets/screenshot-05.png)
+![Screenshot 6](assets/screenshot-06.png)
+![Screenshot 7](assets/screenshot-07.png)
