@@ -12,10 +12,10 @@ See information about a Zendesk ticket's SLA events.
 
 ### Screenshot(s):
 
-![Screenshot 1](assets/screenshot-01.png)
-![Screenshot 2](assets/screenshot-02.png)
-![Screenshot 3](assets/screenshot-03.png)
-![Screenshot 4](assets/screenshot-04.png)
-![Screenshot 5](assets/screenshot-05.png)
-![Screenshot 6](assets/screenshot-06.png)
-![Screenshot 7](assets/screenshot-07.png)
+* ![Screenshot 1](assets/screenshot-01.png)
+* ![Screenshot 2](assets/screenshot-02.png)
+* ![Screenshot 3](assets/screenshot-03.png)
+* ![Screenshot 4](assets/screenshot-04.png)
+* ![Screenshot 5](assets/screenshot-05.png)
+* ![Screenshot 6](assets/screenshot-06.png)
+* ![Screenshot 7](assets/screenshot-07.png)
