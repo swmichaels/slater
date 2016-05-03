@@ -32,6 +32,11 @@
         this.$('#resolution_time').toggle();
       },
 
+      //toggle button in noslas
+      'click #not_detected_toggle': function(event) {
+        this.$('.no_sla_explanation').toggle();
+      },
+
       //toggle buttons for glossary      
       'click #glossary': function(event) {
       	if (this.currentUser().locale() === 'es' ||
@@ -111,6 +116,7 @@
       },
     },
 
+    //gets the SLA info from the API
     requests: {
       getTicketSlaData: function() {
         var curTicket = this.ticket().id();
@@ -138,6 +144,7 @@
       });
     },
 
+    //attaches metric events to targets
     attachMetricEvents: function(slaJSON, metric_events) {
       var targets = _.map(slaJSON.policy_metrics, 
           function(target) {

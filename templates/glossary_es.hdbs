@@ -1,6 +1,7 @@
-<div class="glossary_title">
+<div class="not_detected" align="center">
+<img src="{{assetURL 'glossary_icon.png'}}" alt="glossary_icon" style="width:40px;height:40px;"/>
 <span align="center">
-<h3>Glosario</h3>
+<h3>{{t "glossary"}}</h3>
 </span>
 <hr size="3" noshade>
 </div>

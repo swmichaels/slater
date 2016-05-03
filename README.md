@@ -1,6 +1,6 @@
 # SLAter - SLA Event Tracking App
 
-See information about a ticket's SLA events.
+See information about a Zendesk ticket's SLA events.
 
 ### The following information is displayed:
 

@@ -28,6 +28,7 @@
   "fulfill_def": "A metric that has been completed with an action required by the type of Metric.",
   "glossary": "Glossary",
   "history": "History",
+  "loading": "Loading",
   "metric_gloss": "Metric",
   "metric_gloss_def": "The type of measurement chosen in an SLA Policy. There are Reply Metrics (First Reply Time, Next Reply Time, Periodic Update Time) and Resolution Metrics (Requester Wait Time, Agent Work Time).",
   "metric_stage": "Metric Status",
