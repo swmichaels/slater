@@ -90,8 +90,8 @@
 </div>
 
 <div align="center">
-<span class="label label-info" id="goback">{{t "back"}}</span>
-<a href="{{t "about_slas_link"}}" target="_blank"><span class="label label-default">{{t "about_slas"}}</span></a>
-<a href="{{t "troubleshoot_slas_link"}}" target="_blank"><span class="label label-default">{{t "troubleshoot_slas"}}</span></a>
-<a href="/api/v2/tickets/{{ticketid}}?include=slas,metric_events" target="_blank"><span class="label label-default">{{t "sla_log"}}</span></a>
+<span class="goback_button" id="goback">{{t "back"}}</span>
+<a href="{{t "about_slas_link"}}" target="_blank"><span class="bottom_label">{{t "about_slas"}}</span></a>
+<a href="{{t "troubleshoot_slas_link"}}" target="_blank"><span class="bottom_label">{{t "troubleshoot_slas"}}</span></a>
+<a href="/api/v2/tickets/{{ticketid}}?include=slas,metric_events" target="_blank"><span class="bottom_label">{{t "sla_log"}}</span></a>
 </div>

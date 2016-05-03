@@ -28,8 +28,71 @@ span#fulfill.type {
     background-color: #468847;
 }
 
+span.metric_stage {
+    border-style: solid;
+    border-radius: 3px;
+    color: white;
+    border-width: 3px;
+    border-bottom-width: 0px;
+    border-top-width: 0px;
+    border-color: #3A87B0;
+    background-color: #3A87B0;
+}
+
+span.breach_at_breach {
+    border-style: solid;
+    border-radius: 3px;
+    color: white;
+    border-width: 3px;
+    border-bottom-width: 0px;
+    border-top-width: 0px;
+    border-color: #B94A48;
+    background-color: #B94A48;
+}
+
+span.breach_at_breach_success {
+    border-style: solid;
+    border-radius: 3px;
+    color: white;
+    border-width: 3px;
+    border-bottom-width: 0px;
+    border-top-width: 0px;
+    border-color: #468847;
+    background-color: #468847;
+}
+
+span.sla_policy_applied {
+    border-style: solid;
+    border-radius: 3px;
+    color: white;
+    border-width: 3px;
+    border-bottom-width: 0px;
+    border-top-width: 0px;
+    border-color: #3A87B0;
+    background-color: #3A87B0;
+}
+
+span.bottom_label {
+    border-style: solid;
+    border-radius: 3px;
+    color: white;
+    border-width: 3px;
+    border-bottom-width: 0px;
+    border-top-width: 0px;
+    border-color: #999999;
+    background-color: #999999;
+}
+
 #goback {
     cursor: pointer;
+    border-style: solid;
+    border-radius: 3px;
+    color: white;
+    border-width: 3px;
+    border-bottom-width: 0px;
+    border-top-width: 0px;
+    border-color: #3A87B0;
+    background-color: #3A87B0;
 }
 
 #glossary {
