@@ -12,8 +12,13 @@
     "package": "app_name",
     "description": {
       "value": "See information about a ticket's SLA events.",
-      "title": "See information about a ticket's SLA events."
+      "title": "app description"
     },
+    "name": {
+      "value": "SLAter",
+      "title": "app name"
+    }
+  },
   "apply_sla": "Applied",
   "apply": "Applied",
   "apply_def": "A metric that matches a ticket that has been given a Priority.",
