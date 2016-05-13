@@ -3,12 +3,12 @@
 <a data-toggle="not_detected" id="not_detected_toggle" align="center">
 <h3>{{t "sla_not_detected"}}</h3>
 </a>
-<hr size="3" noshade>
+<hr>
 </div>
 
 <div class="no_sla_explanation" id="no_sla_explanation" align="center">
 {{t "explanation"}}
-<hr size="3" noshade>
+<hr>
 </div>
 
 <div align="center">

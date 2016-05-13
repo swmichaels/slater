@@ -3,7 +3,7 @@
 <span align="center">
 <h3>{{t "glossary"}}</h3>
 </span>
-<hr size="3" noshade>
+<hr>
 </div>
 
 <div class="definitions" id="glossary_definitions">
@@ -87,7 +87,7 @@
 <ul>
 <p class="definition20" id="definition20">{{t "target_gloss_def"}}</p>
 </ul>
-<hr size="3" noshade>
+<hr>
 </div>
 
 <div align="center">

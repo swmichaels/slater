@@ -4,30 +4,30 @@
 <h3>{{t "sla_detected"}}</h3>
 <a data-toggle="target_size" id=target_toggle><h4>{{sla.targets.length}} {{t "time"}} {{t "target"}}</h4></a>
 </span>
-<hr size="3" noshade>
+<hr>
 </div>
 
 <div class="targets">
 {{#each sla.targets}}
   <p><b>{{t "target_name"}}:</b> <span class={{metric}}>{{t metric}}</span></p>
-  <p><b>{{t "metric_stage"}}:</b> <span class="metric_stage">{{t stage}}</span><br />
+  <p><b>{{t "metric_stage"}}:</b> <span class="metric_stage">{{t stage}}</span><br>
   {{#if breach_at}}
-    <b>{{t "breach_at"}}:</b> <span class="breach_at_breach">{{breach_atusertime}}</span><br />
+    <b>{{t "breach_at"}}:</b> <span class="breach_at_breach">{{breach_atusertime}}</span><br>
   {{else}}
-    <b>{{t "breach_at"}}:</b> <span class="breach_at_breach_success" id={{metric}}_success>{{t "no_breaches"}}</span><br />
-  {{/if}}</p><br />
+    <b>{{t "breach_at"}}:</b> <span class="breach_at_breach_success" id={{metric}}_success>{{t "no_breaches"}}</span><br>
+  {{/if}}</p><br>
   <a data-toggle="history_toggle" id={{metric}}_toggle><b>{{t "history"}}</b></a>
   <p class="history_complete" id={{metric}}>
   {{#each history}}
     <span class="timestamp">{{usertime}}</span> <span class="type" id={{type}}>{{t type}}</span>
     {{#if sla}}
-      <br />
+      <br>
       <span class="sla_policy_applied">{{t "sla_policy_applied"}}</span>
       <b><span class="sla_policy_title">{{sla.policy.title}}</span></b>
     {{/if}}
-    <br />
+    <br>
   {{/each}}</p>
-  <hr size="3" noshade>
+  <hr>
 {{/each}}
 </div>
 

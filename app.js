@@ -6,7 +6,7 @@
       'app.activated': 'init',
       'ticket.updated': 'init',      
       'app.willDestroy': function() { 
-        console.log('app is about to be destroyed'); 
+        console.log('SLAter app has crashed'); 
       },
 
       //toggle buttons in slainfo
@@ -213,7 +213,6 @@
           this.historyUserTimes(slaObject.targets);
           this.breachUserTimes(slaObject.targets);
 
-          console.log(slaObject);
           this.switchTo('slainfo', {
             sla: slaObject,
             ticketid: thisID,
