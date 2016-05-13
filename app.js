@@ -5,9 +5,6 @@
     events: {
       'app.activated': 'init',
       'ticket.updated': 'init',      
-      'app.willDestroy': function() { 
-        console.log('SLAter app has crashed'); 
-      },
 
       //toggle buttons in slainfo
       'click #target_toggle': function(event) {
