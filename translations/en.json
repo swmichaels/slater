@@ -8,6 +8,12 @@
   "active_def": "A metric that has not yet been completed.",
   "agent_work_time": "Agent Work Time",
   "agent_work_time_def": "The combined total time spent in the 'New' and 'Open' statuses. The SLA will pause on 'Pending' and 'On-hold', and will only be fulfilled on 'Solved' status. The timer will continue running where it left off if the ticket is reopened.",
+  "app": {
+    "package": "app_name",
+    "description": {
+      "value": "See information about a ticket's SLA events.",
+      "title": "See information about a ticket's SLA events."
+    },
   "apply_sla": "Applied",
   "apply": "Applied",
   "apply_def": "A metric that matches a ticket that has been given a Priority.",

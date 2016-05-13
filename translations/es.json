@@ -8,6 +8,12 @@
   "active_def": "Una métrica que no ha sido completada.",
   "agent_work_time": "Tiempo de Trabajo del Agente",
   "agent_work_time_def": "La suma total del tiempo transcurrido en los estados 'Nuevo' y 'Abierto'. La SLA hará una pausa en 'Pendiente' y 'En espera', y sólo puede ser cumplida en estado 'Resuelto'. El minutero continuará donde quedó si el ticket es reabierto.",
+  "app": {
+    "package": "app_name",
+    "description": {
+      "value": "See information about a ticket's SLA events.",
+      "title": "See information about a ticket's SLA events."
+    },
   "apply_sla": "Aplicada",
   "apply": "Aplicada",
   "apply_def": "Una métrica que coincide con un ticket que tiene Prioridad.",
