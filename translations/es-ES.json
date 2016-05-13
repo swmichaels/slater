@@ -11,7 +11,7 @@
   "app": {
     "package": "app_name",
     "description": {
-      "value": "See information about a ticket's SLA events.",
+      "value": "Vea información sobre los eventos de SLA en tickets.",
       "title": "app description"
     },
     "name": {

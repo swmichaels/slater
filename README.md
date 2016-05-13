@@ -1,12 +1,12 @@
 # SLAter - SLA Event Tracking App
 
-See information about a Zendesk ticket's SLA events.
+See information about a ticket's SLA events.
 
-### The following information is displayed:
+### This app does the following:
 
 * Makes an API call to find important SLA data missing from the Ticket Events log.
 
-* Displays the information for the ticket SLA events in a user-friendly manner. 
+* Displays the information for the ticket SLA events in a user-friendly manner.
 
 * Allows users to see when SLA metrics where applied, fulfilled, or breached.
 
