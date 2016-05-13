@@ -9,15 +9,7 @@
   "agent_work_time": "Tiempo de Trabajo del Agente",
   "agent_work_time_def": "La suma total del tiempo transcurrido en los estados 'Nuevo' y 'Abierto'. La SLA hará una pausa en 'Pendiente' y 'En espera', y sólo puede ser cumplida en estado 'Resuelto'. El minutero continuará donde quedó si el ticket es reabierto.",
   "app": {
-    "package": "app_name",
-    "description": {
-      "value": "Vea información sobre los eventos de SLA en tickets.",
-      "title": "app description"
-    },
-    "name": {
-      "value": "SLAter",
-      "title": "app name"
-    }
+    "description": "Vea información sobre los eventos de SLA en tickets."
   },
   "apply_sla": "Aplicada",
   "apply": "Aplicada",
