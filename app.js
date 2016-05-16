@@ -4,9 +4,9 @@
 
     events: {
       'app.activated': 'init',
-      'ticket.updated': 'init',      
+      'ticket.updated': 'init',
 
-      //toggle buttons in slainfo
+      //toggles buttons in slainfo
       'click #target_toggle': function(event) {
         this.$('.targets').toggle();
       },
@@ -29,12 +29,12 @@
         this.$('#resolution_time').toggle();
       },
 
-      //toggle button in noslas
+      //toggles button in noslas
       'click #not_detected_toggle': function(event) {
         this.$('.no_sla_explanation').toggle();
       },
 
-      //toggle buttons for glossary      
+      //toggles buttons for glossary      
       'click #glossary': function(event) {
       	if (this.currentUser().locale() === 'es' ||
       		this.currentUser().locale() === 'es-ES' ||
@@ -50,7 +50,7 @@
       },
       'click #goback': 'init',
 
-      //toggle buttons in glossary for definitions
+      //toggles buttons in glossary for definitions
       'click #definition1name': function(event) {
         this.$('#definition1').toggle();
       },      
@@ -113,8 +113,8 @@
       },
     },
 
-    //gets the SLA info from the API
     requests: {
+      //gets the SLA info from the API
       getTicketSlaData: function() {
         var curTicket = this.ticket().id();
         return {
@@ -125,7 +125,7 @@
       }
     },
 
-    // converts ZD API timestamps into User's local time
+    //converts ZD API timestamps into User's local time
     userTime: function(timestamp) {
       var currentAccount = this.currentAccount();
       var currentUser = this.currentUser();
@@ -134,7 +134,7 @@
         .format('YYYY-MM-DD [at] hh:mm:ss a z');
     },
 
-    // Remove objects from array containing "type: measure" or "type: update_status"
+    //removes objects from array containing "type: measure" or "type: update_status"
     removeHistoryTypes: function(array) {
       return _.filter(array, function(e) {
         return (e.type != 'measure' && e.type != 'update_status');
@@ -156,13 +156,13 @@
       return targets;
     },
 
-    // gets the SLA Policy name and time applied to ticket
+    //gets the SLA Policy name and time applied to ticket
     getPolicyInfo: function(array) {
       var element = _.chain(array).where({ type: 'apply_sla' }).last().value();
       return {title: element.sla.policy.title, time: element.time};
     },
 
-    // loop through all history arrays and add a usertime key/value pair
+    //loops through all history arrays and add a usertime key/value pair
     historyUserTimes: function(targets) {
       var self = this;
       _.each(targets, function(target) {
@@ -172,7 +172,7 @@
       });
     },
 
-    // loop through all history arrays and add a usertime key/value pair
+    //loops through all history arrays and add a usertime key/value pair
     breachUserTimes: function(array) {
       var self = this;
       _.each(array, function(element) {
@@ -194,19 +194,19 @@
 
         } else {
 
-          // create an object to pass to the templates
+          //creates an object to pass to the templates
           var slaObject = {};
           
-          // merge sideloaded data
+          //merges sideloaded data
           slaObject.targets = this.attachMetricEvents(slaJSON, 
               data.ticket.metric_events);
 
-          // strip extra types
+          //strips extra types
           _.each(slaObject.targets, function(target) {
             target.history = self.removeHistoryTypes(target.history);
           });
 
-          // add user's local times in all places where a timestamp exists
+          //adds user's local times in all places where a timestamp exists
           this.historyUserTimes(slaObject.targets);
           this.breachUserTimes(slaObject.targets);
 
