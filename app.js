@@ -12,21 +12,73 @@
       },
       'click #first_reply_time_toggle': function(event) {
         this.$('#first_reply_time').toggle();
+        var currentTime = Date.now();
+        var currentTimeFormat = moment(currentTime).format('YYYY-MM-DD [at] hh:mm:ss a z');
+        var userTime = this.$('#first_reply_time #timestamp_breach');
+        var userTimeValue = userTime.last().text();
+        var badge = this.$('#first_reply_time #breach');
+        var history = this.$('p#first_reply_time.history_complete');
+        if (userTimeValue > currentTimeFormat) {
+          userTime.last().toggle();
+          badge.last().toggle();
+          history.css("marginBottom", "-18px");
+        }
       }, 
       'click #next_reply_time_toggle': function(event) {
         this.$('#next_reply_time').toggle();
+        var currentTime = Date.now();
+        var currentTimeFormat = moment(currentTime).format('YYYY-MM-DD [at] hh:mm:ss a z');
+        var userTime = this.$('#next_reply_time #timestamp_breach');
+        var userTimeValue = userTime.last().text();
+        var badge = this.$('#next_reply_time #breach');
+        var history = this.$('p#next_reply_time.history_complete');
+        if (userTimeValue > currentTimeFormat) {
+          userTime.last().toggle();
+          badge.last().toggle();
+          history.css("marginBottom", "-18px");
+        }
       }, 
+      'click #periodic_update_time_toggle': function(event) {
+        this.$('#periodic_update_time').toggle();
+        var currentTime = Date.now();
+        var currentTimeFormat = moment(currentTime).format('YYYY-MM-DD [at] hh:mm:ss a z');
+        var userTime = this.$('#periodic_update_time #timestamp_breach');
+        var userTimeValue = userTime.last().text();
+        var badge = this.$('#periodic_update_time #breach');
+        var history = this.$('p#periodic_update_time.history_complete');
+        if (userTimeValue > currentTimeFormat) {
+          userTime.last().toggle();
+          badge.last().toggle();
+          history.css("marginBottom", "-18px");
+        }
+      },
       'click #requester_wait_time_toggle': function(event) {
         this.$('#requester_wait_time').toggle();
+        var currentTime = Date.now();
+        var currentTimeFormat = moment(currentTime).format('YYYY-MM-DD [at] hh:mm:ss a z');
+        var userTime = this.$('#requester_wait_time #timestamp_breach');
+        var userTimeValue = userTime.last().text();
+        var badge = this.$('#requester_wait_time #breach');
+        var history = this.$('p#requester_wait_time.history_complete');
+        if (userTimeValue > currentTimeFormat) {
+          userTime.last().toggle();
+          badge.last().toggle();
+          history.css("marginBottom", "-18px");
+        }
       }, 
       'click #agent_work_time_toggle': function(event) {
         this.$('#agent_work_time').toggle();
-      },      
-      'click #periodic_update_time_toggle': function(event) {
-        this.$('#periodic_update_time').toggle();
-      },
-      'click #resolution_time_toggle': function(event) {
-        this.$('#resolution_time').toggle();
+        var currentTime = Date.now();
+        var currentTimeFormat = moment(currentTime).format('YYYY-MM-DD [at] hh:mm:ss a z');
+        var userTime = this.$('#agent_work_time #timestamp_breach');
+        var userTimeValue = userTime.last().text();
+        var badge = this.$('#agent_work_time #breach');
+        var history = this.$('p#agent_work_time.history_complete');
+        if (userTimeValue > currentTimeFormat) {
+          userTime.last().toggle();
+          badge.last().toggle();
+          history.css("marginBottom", "-18px");
+        }
       },
 
       //toggles button in noslas

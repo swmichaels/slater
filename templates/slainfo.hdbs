@@ -19,7 +19,7 @@
   <a data-toggle="history_toggle" id={{metric}}_toggle><b>{{t "history"}}</b></a>
   <p class="history_complete" id={{metric}}>
   {{#each history}}
-    <span class="timestamp">{{usertime}}</span> <span class="type" id={{type}}>{{t type}}</span>
+    <span class="timestamp" id=timestamp_{{type}}>{{usertime}}</span> <span class="type" id={{type}}>{{t type}}</span>
     {{#if sla}}
       <br>
       <span class="sla_policy_applied">{{t "sla_policy_applied"}}</span>
