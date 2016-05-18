@@ -1,17 +1,17 @@
-# SLAter - SLA Event Tracking Tool
+# SLAter - SLA Event Tracking App
 
-Show information about your ticket's SLAs.
+See information about a ticket's SLA events.
 
-### The following information is displayed:
+### This app does the following:
 
-* Uses ticket sideloads to find important SLA data missing from plain old event viewer.
+* Makes an API call to find important SLA data missing from the Ticket Events log.
 
-Pull requests are welcome.
+* Displays the information for the ticket SLA events in a user-friendly manner.
+
+* Allows users to see when SLA metrics where applied, fulfilled, or breached.
 
 ### Screenshot(s):
 
-![Screenshot 1](assets/screenshot-01.png)
-![Screenshot 2](assets/screenshot-02.png)
-![Screenshot 3](assets/screenshot-03.png)
-![Screenshot 4](assets/screenshot-04.png)
-![Screenshot 5](assets/screenshot-05.png)
+![Screenshot 1](assets/screenshot-1.png)
+![Screenshot 2](assets/screenshot-2.png)
+![Screenshot 3](assets/screenshot-3.png)

@@ -4,35 +4,89 @@
 
     events: {
       'app.activated': 'init',
-      'ticket.updated': 'init',      
-      'app.willDestroy': function() { 
-        console.log('app is about to be destroyed'); 
-      },
+      'ticket.updated': 'init',
 
-      //toggle buttons in slainfo
+      //toggles buttons in slainfo
       'click #target_toggle': function(event) {
         this.$('.targets').toggle();
       },
       'click #first_reply_time_toggle': function(event) {
         this.$('#first_reply_time').toggle();
+        var currentTime = Date.now();
+        var currentTimeFormat = moment(currentTime).format('YYYY-MM-DD [at] hh:mm:ss a z');
+        var userTime = this.$('#first_reply_time #timestamp_breach');
+        var userTimeValue = userTime.last().text();
+        var badge = this.$('#first_reply_time #breach');
+        var history = this.$('p#first_reply_time.history_complete');
+        if (userTimeValue > currentTimeFormat) {
+          userTime.last().toggle();
+          badge.last().toggle();
+          history.css("marginBottom", "-18px");
+        }
       }, 
       'click #next_reply_time_toggle': function(event) {
         this.$('#next_reply_time').toggle();
+        var currentTime = Date.now();
+        var currentTimeFormat = moment(currentTime).format('YYYY-MM-DD [at] hh:mm:ss a z');
+        var userTime = this.$('#next_reply_time #timestamp_breach');
+        var userTimeValue = userTime.last().text();
+        var badge = this.$('#next_reply_time #breach');
+        var history = this.$('p#next_reply_time.history_complete');
+        if (userTimeValue > currentTimeFormat) {
+          userTime.last().toggle();
+          badge.last().toggle();
+          history.css("marginBottom", "-18px");
+        }
       }, 
+      'click #periodic_update_time_toggle': function(event) {
+        this.$('#periodic_update_time').toggle();
+        var currentTime = Date.now();
+        var currentTimeFormat = moment(currentTime).format('YYYY-MM-DD [at] hh:mm:ss a z');
+        var userTime = this.$('#periodic_update_time #timestamp_breach');
+        var userTimeValue = userTime.last().text();
+        var badge = this.$('#periodic_update_time #breach');
+        var history = this.$('p#periodic_update_time.history_complete');
+        if (userTimeValue > currentTimeFormat) {
+          userTime.last().toggle();
+          badge.last().toggle();
+          history.css("marginBottom", "-18px");
+        }
+      },
       'click #requester_wait_time_toggle': function(event) {
         this.$('#requester_wait_time').toggle();
+        var currentTime = Date.now();
+        var currentTimeFormat = moment(currentTime).format('YYYY-MM-DD [at] hh:mm:ss a z');
+        var userTime = this.$('#requester_wait_time #timestamp_breach');
+        var userTimeValue = userTime.last().text();
+        var badge = this.$('#requester_wait_time #breach');
+        var history = this.$('p#requester_wait_time.history_complete');
+        if (userTimeValue > currentTimeFormat) {
+          userTime.last().toggle();
+          badge.last().toggle();
+          history.css("marginBottom", "-18px");
+        }
       }, 
       'click #agent_work_time_toggle': function(event) {
         this.$('#agent_work_time').toggle();
-      },      
-      'click #periodic_update_time_toggle': function(event) {
-        this.$('#periodic_update_time').toggle();
-      },
-      'click #resolution_time_toggle': function(event) {
-        this.$('#resolution_time').toggle();
+        var currentTime = Date.now();
+        var currentTimeFormat = moment(currentTime).format('YYYY-MM-DD [at] hh:mm:ss a z');
+        var userTime = this.$('#agent_work_time #timestamp_breach');
+        var userTimeValue = userTime.last().text();
+        var badge = this.$('#agent_work_time #breach');
+        var history = this.$('p#agent_work_time.history_complete');
+        if (userTimeValue > currentTimeFormat) {
+          userTime.last().toggle();
+          badge.last().toggle();
+          history.css("marginBottom", "-18px");
+        }
       },
 
-      //toggle buttons for glossary      
+      //toggles button in noslas
+      'click #not_detected_toggle': function(event) {
+        this.$('.no_sla_explanation').toggle();
+      },
+
+      //toggles buttons for glossary      
       'click #glossary': function(event) {
       	if (this.currentUser().locale() === 'es' ||
       		this.currentUser().locale() === 'es-ES' ||
@@ -48,7 +102,7 @@
       },
       'click #goback': 'init',
 
-      //toggle buttons in glossary for definitions
+      //toggles buttons in glossary for definitions
       'click #definition1name': function(event) {
         this.$('#definition1').toggle();
       },      
@@ -112,6 +166,7 @@
     },
 
     requests: {
+      //gets the SLA info from the API
       getTicketSlaData: function() {
         var curTicket = this.ticket().id();
         return {
@@ -122,7 +177,7 @@
       }
     },
 
-    // converts ZD API timestamps into User's local time
+    //converts ZD API timestamps into User's local time
     userTime: function(timestamp) {
       var currentAccount = this.currentAccount();
       var currentUser = this.currentUser();
@@ -131,13 +186,14 @@
         .format('YYYY-MM-DD [at] hh:mm:ss a z');
     },
 
-    // Remove objects from array containing "type: measure" or "type: update_status"
+    //removes objects from array containing "type: measure" or "type: update_status"
     removeHistoryTypes: function(array) {
       return _.filter(array, function(e) {
         return (e.type != 'measure' && e.type != 'update_status');
       });
     },
 
+    //attaches metric events to targets
     attachMetricEvents: function(slaJSON, metric_events) {
       var targets = _.map(slaJSON.policy_metrics, 
           function(target) {
@@ -152,13 +208,13 @@
       return targets;
     },
 
-    // gets the SLA Policy name and time applied to ticket
+    //gets the SLA Policy name and time applied to ticket
     getPolicyInfo: function(array) {
       var element = _.chain(array).where({ type: 'apply_sla' }).last().value();
       return {title: element.sla.policy.title, time: element.time};
     },
 
-    // loop through all history arrays and add a usertime key/value pair
+    //loops through all history arrays and add a usertime key/value pair
     historyUserTimes: function(targets) {
       var self = this;
       _.each(targets, function(target) {
@@ -168,7 +224,7 @@
       });
     },
 
-    // loop through all history arrays and add a usertime key/value pair
+    //loops through all history arrays and add a usertime key/value pair
     breachUserTimes: function(array) {
       var self = this;
       _.each(array, function(element) {
@@ -190,23 +246,22 @@
 
         } else {
 
-          // create an object to pass to the templates
+          //creates an object to pass to the templates
           var slaObject = {};
           
-          // merge sideloaded data
+          //merges sideloaded data
           slaObject.targets = this.attachMetricEvents(slaJSON, 
               data.ticket.metric_events);
 
-          // strip extra types
+          //strips extra types
           _.each(slaObject.targets, function(target) {
             target.history = self.removeHistoryTypes(target.history);
           });
 
-          // add user's local times in all places where a timestamp exists
+          //adds user's local times in all places where a timestamp exists
           this.historyUserTimes(slaObject.targets);
           this.breachUserTimes(slaObject.targets);
 
-          console.log(slaObject);
           this.switchTo('slainfo', {
             sla: slaObject,
             ticketid: thisID,
@@ -222,4 +277,3 @@
     },
   };
 }());
-
