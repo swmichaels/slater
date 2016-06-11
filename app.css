@@ -37,6 +37,11 @@ div.targets {
     display:none;
 }
 
+div.targets > p, div.targets > a {
+    width: 280px;
+    margin-left: 20px;
+}
+
 div.no_sla_explanation {
     display:none;
 }
