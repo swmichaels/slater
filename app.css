@@ -1,3 +1,10 @@
+#loading_icon {
+    height: 80px; 
+    width: 80px; 
+    margin-bottom:-10px; 
+    margin-top:-20px;
+}
+
 #alert_icon {
     height: 80px; 
     width: 80px; 
@@ -6,7 +13,7 @@
     margin-right: -30px;
 }
 
-#loading_icon, #target_icon, #glossary_icon {
+#target_icon, #glossary_icon {
     height: 80px; 
     width: 80px; 
     margin-bottom:-20px; 
