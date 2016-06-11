@@ -22,6 +22,7 @@
         if (userTimeValueMoment >= currentTimeFormat) {
           userTime.last().toggle();
           badge.last().toggle();
+          this.$('p#agent_work_time.history_complete').attr("id", "history_hidden");
         }
       }, 
       'click #next_reply_time_toggle': function(event) {
@@ -36,6 +37,7 @@
         if (userTimeValueMoment >= currentTimeFormat) {
           userTime.last().toggle();
           badge.last().toggle();
+          this.$('p#agent_work_time.history_complete').attr("id", "history_hidden");
         }
       }, 
       'click #periodic_update_time_toggle': function(event) {
@@ -50,6 +52,7 @@
         if (userTimeValueMoment >= currentTimeFormat) {
           userTime.last().toggle();
           badge.last().toggle();
+          this.$('p#agent_work_time.history_complete').attr("id", "history_hidden");
         }
       },
       'click #requester_wait_time_toggle': function(event) {
@@ -64,6 +67,7 @@
         if (userTimeValueMoment >= currentTimeFormat) {
           userTime.last().toggle();
           badge.last().toggle();
+          this.$('p#agent_work_time.history_complete').attr("id", "history_hidden");
         }
       }, 
       'click #agent_work_time_toggle': function(event) {
@@ -78,6 +82,7 @@
         if (userTimeValueMoment >= currentTimeFormat) {
           userTime.last().toggle();
           badge.last().toggle();
+          this.$('p#agent_work_time.history_complete').attr("id", "history_hidden");
         }
       },
 

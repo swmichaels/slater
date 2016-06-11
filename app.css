@@ -50,6 +50,10 @@ p.history_complete {
 	display:none;
 }
 
+#history_hidden.history_complete {
+    margin-bottom: -18px;
+}
+
 span#breach.type {
 	border-style: solid;
     border-radius: 3px;
