@@ -22,7 +22,6 @@
         if (userTimeValueMoment >= currentTimeFormat) {
           userTime.last().toggle();
           badge.last().toggle();
-          history.css("marginBottom", "-18px");
         }
       }, 
       'click #next_reply_time_toggle': function(event) {
@@ -37,7 +36,6 @@
         if (userTimeValueMoment >= currentTimeFormat) {
           userTime.last().toggle();
           badge.last().toggle();
-          history.css("marginBottom", "-18px");
         }
       }, 
       'click #periodic_update_time_toggle': function(event) {
@@ -52,7 +50,6 @@
         if (userTimeValueMoment >= currentTimeFormat) {
           userTime.last().toggle();
           badge.last().toggle();
-          history.css("marginBottom", "-18px");
         }
       },
       'click #requester_wait_time_toggle': function(event) {
@@ -67,7 +64,6 @@
         if (userTimeValueMoment >= currentTimeFormat) {
           userTime.last().toggle();
           badge.last().toggle();
-          history.css("marginBottom", "-18px");
         }
       }, 
       'click #agent_work_time_toggle': function(event) {
@@ -82,7 +78,6 @@
         if (userTimeValueMoment >= currentTimeFormat) {
           userTime.last().toggle();
           badge.last().toggle();
-          history.css("marginBottom", "-18px");
         }
       },
 
