@@ -13,76 +13,76 @@
       'click #first_reply_time_toggle': function(event) {
         this.$('#first_reply_time').toggle();
         var currentTime = Date.now();
-        var currentTimeFormat = moment(currentTime).format();
         var userTime = this.$('#first_reply_time #timestamp_breach');
         var userTimeValue = userTime.last().text();
         var userTimeValueMoment = moment(userTimeValue, 'YYYY-MM-DD [at] hh:mm:ss a z').format();
+        var userTimeValueUnix = new Date(userTimeValueMoment).getTime();
         var badge = this.$('#first_reply_time #breach');
         var history = this.$('p#first_reply_time.history_complete');
-        if (userTimeValueMoment >= currentTimeFormat) {
+        if (userTimeValueUnix >= currentTime) {
           userTime.last().toggle();
           badge.last().toggle();
-          this.$('p#agent_work_time.history_complete').attr("id", "history_hidden");
+          history.css("marginBottom", "-18px");
         }
       }, 
       'click #next_reply_time_toggle': function(event) {
         this.$('#next_reply_time').toggle();
         var currentTime = Date.now();
-        var currentTimeFormat = moment(currentTime).format();
         var userTime = this.$('#next_reply_time #timestamp_breach');
         var userTimeValue = userTime.last().text();
         var userTimeValueMoment = moment(userTimeValue, 'YYYY-MM-DD [at] hh:mm:ss a z').format();
+        var userTimeValueUnix = new Date(userTimeValueMoment).getTime();
         var badge = this.$('#next_reply_time #breach');
         var history = this.$('p#next_reply_time.history_complete');
-        if (userTimeValueMoment >= currentTimeFormat) {
+        if (userTimeValueUnix >= currentTime) {
           userTime.last().toggle();
           badge.last().toggle();
-          this.$('p#agent_work_time.history_complete').attr("id", "history_hidden");
+          history.css("marginBottom", "-18px");
         }
       }, 
       'click #periodic_update_time_toggle': function(event) {
         this.$('#periodic_update_time').toggle();
         var currentTime = Date.now();
-        var currentTimeFormat = moment(currentTime).format();
         var userTime = this.$('#periodic_update_time #timestamp_breach');
         var userTimeValue = userTime.last().text();
         var userTimeValueMoment = moment(userTimeValue, 'YYYY-MM-DD [at] hh:mm:ss a z').format();
+        var userTimeValueUnix = new Date(userTimeValueMoment).getTime();
         var badge = this.$('#periodic_update_time #breach');
         var history = this.$('p#periodic_update_time.history_complete');
-        if (userTimeValueMoment >= currentTimeFormat) {
+        if (userTimeValueUnix >= currentTime) {
           userTime.last().toggle();
           badge.last().toggle();
-          this.$('p#agent_work_time.history_complete').attr("id", "history_hidden");
+          history.css("marginBottom", "-18px");
         }
       },
       'click #requester_wait_time_toggle': function(event) {
         this.$('#requester_wait_time').toggle();
         var currentTime = Date.now();
-        var currentTimeFormat = moment(currentTime).format();
         var userTime = this.$('#requester_wait_time #timestamp_breach');
         var userTimeValue = userTime.last().text();
         var userTimeValueMoment = moment(userTimeValue, 'YYYY-MM-DD [at] hh:mm:ss a z').format();
+        var userTimeValueUnix = new Date(userTimeValueMoment).getTime();
         var badge = this.$('#requester_wait_time #breach');
         var history = this.$('p#requester_wait_time.history_complete');
-        if (userTimeValueMoment >= currentTimeFormat) {
+        if (userTimeValueUnix >= currentTime) {
           userTime.last().toggle();
           badge.last().toggle();
-          this.$('p#agent_work_time.history_complete').attr("id", "history_hidden");
+          history.css("marginBottom", "-18px");
         }
       }, 
       'click #agent_work_time_toggle': function(event) {
         this.$('#agent_work_time').toggle();
         var currentTime = Date.now();
-        var currentTimeFormat = moment(currentTime).format();
         var userTime = this.$('#agent_work_time #timestamp_breach');
         var userTimeValue = userTime.last().text();
         var userTimeValueMoment = moment(userTimeValue, 'YYYY-MM-DD [at] hh:mm:ss a z').format();
+        var userTimeValueUnix = new Date(userTimeValueMoment).getTime();
         var badge = this.$('#agent_work_time #breach');
         var history = this.$('p#agent_work_time.history_complete');
-        if (userTimeValueMoment >= currentTimeFormat) {
+        if (userTimeValueUnix >= currentTime) {
           userTime.last().toggle();
           badge.last().toggle();
-          this.$('p#agent_work_time.history_complete').attr("id", "history_hidden");
+          history.css("marginBottom", "-18px");
         }
       },
 

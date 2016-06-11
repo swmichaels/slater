@@ -38,8 +38,8 @@ div.targets {
 }
 
 div.targets > p, div.targets > a {
-    width: 280px;
-    margin-left: 20px;
+    width: 290px;
+    margin-left: 15px;
 }
 
 div.no_sla_explanation {
@@ -48,10 +48,6 @@ div.no_sla_explanation {
 
 p.history_complete {
 	display:none;
-}
-
-#history_hidden.history_complete {
-    margin-bottom: -18px;
 }
 
 span#breach.type {
