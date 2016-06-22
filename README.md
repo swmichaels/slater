@@ -1,6 +1,6 @@
-# SLAter - SLA Event Tracking App
+# SLA Event Tracker
 
-See information about a ticket's SLA events.
+See information about ticket SLA events.
 
 ### This app does the following:
 
@@ -8,7 +8,7 @@ See information about a ticket's SLA events.
 
 * Displays the information for the ticket SLA events in a user-friendly manner.
 
-* Allows users to see when SLA metrics where applied, fulfilled, or breached.
+* Allows users to see when SLA metrics were applied, fulfilled, or breached.
 
 ### Screenshot(s):
 
